@@ -1,12 +1,14 @@
 lockfileVersion: 5.4
 
 specifiers:
+  redaxios: ^0.5.0
   solid-js: ^1.4.7
   typescript: ^4.7.4
   vite: ^3.0.0
   vite-plugin-solid: ^2.3.0
 
 dependencies:
+  redaxios: 0.5.0
   solid-js: 1.4.7
 
 devDependencies:
@@ -766,6 +768,10 @@ packages:
       picocolors: 1.0.0
       source-map-js: 1.0.2
     dev: true
+
+  /redaxios/0.5.0:
+    resolution: {integrity: sha512-qmEJjQF0igI+H9SDKlQdWz6XskJ5zm2s6KPY0AvtlbQtRNe1OcuJIfxGmySDCpoU18/UtC7zWEFIWpkHMZ1/Ow==}
+    dev: false
 
   /resolve/1.22.1:
     resolution: {integrity: sha512-nBpuuYuY5jFsli/JIs1oldw6fOQCBioohqWZg/2hiaOybXOft4lonv85uDOKXdf8rhyK159cxU5cDcK/NKk8zw==}
