@@ -15,23 +15,23 @@ export function useAsyncFn<T> (asyncFn: (...params: unknown[]) => Promise<T>) {
 
 function useAsyncInternal<T> (asyncFn: (...params: unknown[]) => Promise<T>, initialLoading: boolean = false) {
   const [loading, setLoading] = createSignal<boolean>(initialLoading)
-  const [error, setError] = createSignal<Error>()
-  const [value, setValue] = createSignal<T |undefined>()
+  const [error, setError] = createSignal<string>()
+  const [value, setValue] = createSignal<T | undefined>(undefined)
 
-  const execute = (...params: unknown[]) => {
+  const execute = async (...params: unknown[]) => {
     setLoading(true)
-    return asyncFn(...params).then(value => {
-      // @ts-ignore
-      setValue(value)
+    try {
+      const data = await asyncFn(...params)
+      setValue(() => data)
       setError(undefined)
-      return value
-    }).catch(error => {
+      return data
+    } catch (error: any) {
       setValue(undefined)
-      setError(error)
+      setError(() => error)
       return Promise.reject(error)
-    }).finally(() => {
+    } finally {
       setLoading(false)
-    })
+    }
   }
 
   return { loading, error, value, execute }
