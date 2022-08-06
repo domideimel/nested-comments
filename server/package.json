@@ -7,8 +7,11 @@
   "scripts": {
     "dev": "nodemon server.ts"
   },
-  "keywords": [],
   "author": "",
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "keywords": [],
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^18.6.4",
