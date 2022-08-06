@@ -26,6 +26,35 @@ app.get('/posts', async (req, res) => {
   }))
 })
 
+app.get<{ Params: { id: string } }>('/posts/:id', async (req, res) => {
+  return await commitToDB(prisma.post.findUnique({
+    where: {
+      id: req.params.id
+    },
+    select: {
+      body: true,
+      title: true,
+      comments: {
+        orderBy: {
+          createdAt: 'desc'
+        },
+        select: {
+          id: true,
+          message: true,
+          parentId: true,
+          createdAt: true,
+          user: {
+            select: {
+              id: true,
+              name: true
+            }
+          }
+        }
+      }
+    }
+  }))
+})
+
 async function commitToDB<T> (promise: Promise<T>): Promise<T | HttpError> {
   const [error, data] = await app.to(promise)
   if (error) return app.httpErrors.internalServerError(error.message)
