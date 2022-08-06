@@ -1,8 +1,9 @@
 import type { Options } from 'redaxios'
 import axios from 'redaxios'
 
+// @TODO: .env for URL
 const request = axios.create({
-  baseURL: import.meta.env.VITE_SERVER_URL,
+  baseURL: 'http://localhost:3001',
   withCredentials: true,
 })
 
