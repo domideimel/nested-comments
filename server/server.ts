@@ -11,7 +11,10 @@ config()
 const app = fastify()
 const prisma = new PrismaClient()
 
-app.register(fastifyCors)
+app.register(fastifyCors, {
+  origin: process.env.CLIENT_URL,
+  credentials: true,
+})
 app.register(fastifySensible)
 
 app.get('/posts', async (req, res) => {
