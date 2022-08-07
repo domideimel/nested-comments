@@ -32,6 +32,7 @@ app.get<{ Params: { id: string } }>('/posts/:id', async (req, res) => {
       id: req.params.id
     },
     select: {
+      id: true,
       body: true,
       title: true,
       comments: {
