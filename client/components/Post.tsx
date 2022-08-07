@@ -1,10 +1,20 @@
-import type { Component, Signal } from 'solid-js'
+import type { Component } from 'solid-js'
+import { createSignal, Show } from 'solid-js'
 import { usePost } from '../src/context/PostContext'
-import { Post } from '../src/types/Post'
 
 const Post: Component = () => {
-  const post = usePost() as () => Post
-  return (<>{post().title}</>)
+  const store = usePost()
+  const [rootComments] = createSignal(store?.getReplies('main'))
+  return (<>
+    <Show when={store!.value()}>
+      <h1>{store!.value()!.title}</h1>
+      <article>{store!.value()!.body}</article>
+      <h3 class="comments-title">Comments</h3>
+      <section>
+        {JSON.stringify(rootComments())}
+      </section>
+    </Show>
+  </>)
 }
 
 export default Post
