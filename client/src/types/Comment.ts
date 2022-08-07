@@ -5,8 +5,8 @@ import { Like } from './Like'
 export interface Comment {
   id: string
   message: string
-  createdAt: Date
-  updatedAt: Date
+  createdAt: string
+  updatedAt: string
   user: User
   userId: string
   post: Post
