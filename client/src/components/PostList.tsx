@@ -1,8 +1,8 @@
 import type { Component } from 'solid-js'
 import { For } from 'solid-js'
-import { getPosts } from '../src/services/post'
+import { getPosts } from '../services/post'
 import { Link } from '@solidjs/router'
-import { useAsync } from '../src/hooks/useAsync'
+import { useAsync } from '../hooks/useAsync'
 
 const PostList: Component = () => {
   const { loading, value, error } = useAsync(getPosts)

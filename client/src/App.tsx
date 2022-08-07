@@ -1,8 +1,8 @@
 import { Route, Router, Routes } from '@solidjs/router'
 import type { Component } from 'solid-js'
-import PostList from '../components/PostList'
+import PostList from './components/PostList'
 import { PostProvider } from './context/PostContext'
-import Post from '../components/Post'
+import Post from './components/Post'
 
 const App: Component = () => {
   return (
